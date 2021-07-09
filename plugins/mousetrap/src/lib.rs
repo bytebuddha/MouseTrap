@@ -11,8 +11,6 @@ use crate::menu::MenuPlugin;
 use crate::player::PlayerPlugin;
 
 use bevy::app::AppBuilder;
-#[cfg(debug_assertions)]
-use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, LogDiagnosticsPlugin};
 use bevy::prelude::*;
 
 // This example game uses States to separate logic
@@ -28,21 +26,16 @@ enum GameState {
     Menu,
 }
 
-pub struct GamePlugin;
+pub struct MouseTrapPlugin;
 
-impl Plugin for GamePlugin {
+impl Plugin for MouseTrapPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.add_state(GameState::Loading)
             .add_plugin(LoadingPlugin)
             .add_plugin(MenuPlugin)
             .add_plugin(ActionsPlugin)
             .add_plugin(InternalAudioPlugin)
-            .add_plugin(PlayerPlugin);
-
-        #[cfg(debug_assertions)]
-        {
-            app.add_plugin(FrameTimeDiagnosticsPlugin::default())
-                .add_plugin(LogDiagnosticsPlugin::default());
-        }
+            .add_plugin(PlayerPlugin)
+            .add_plugin(bevy_devtools::DevToolsPlugin);
     }
 }
