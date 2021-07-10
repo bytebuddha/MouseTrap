@@ -22,5 +22,8 @@ native = [
 bevy_devtools = { git = "https://github.com/Bytebuddha/bevy_devtools" }
 bevy = { version = "0.5.0", default-features = false }
 bevy_kira_audio = { version = "0.5.1" }
-bevy_asset_loader = "0.2.1"
+game_state = { path = "../../crates/game_state" }
+assets_plugin = { path = "../assets" }
+player_plugin = { path = "../player" }
+actions_plugin = { path = "../actions" }
 rand = "0.8.3"

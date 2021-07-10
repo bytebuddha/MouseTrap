@@ -1,14 +1,14 @@
-use crate::GameState;
+use game_state::GameState;
 use bevy::prelude::*;
 use bevy_asset_loader::{AssetCollection, AssetLoader};
 use bevy_kira_audio::AudioSource;
 
-pub struct LoadingPlugin;
+pub struct AssetsPlugin;
 
 /// This plugin loads all assets using [AssetLoader] from a third party bevy plugin
 /// Alternatively you can write the logic to load assets yourself
 /// If interested, take a look at https://bevy-cheatbook.github.io/features/assets.html
-impl Plugin for LoadingPlugin {
+impl Plugin for AssetsPlugin {
     fn build(&self, app: &mut AppBuilder) {
         AssetLoader::new(GameState::Loading, GameState::Menu)
             .with_collection::<FontAssets>()

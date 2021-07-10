@@ -1,41 +1,23 @@
-mod actions;
 mod audio;
-mod loading;
 mod menu;
-mod player;
 
-use crate::actions::ActionsPlugin;
+use actions_plugin::ActionsPlugin;
 use crate::audio::InternalAudioPlugin;
-use crate::loading::LoadingPlugin;
 use crate::menu::MenuPlugin;
-use crate::player::PlayerPlugin;
 
 use bevy::app::AppBuilder;
 use bevy::prelude::*;
-
-// This example game uses States to separate logic
-// See https://bevy-cheatbook.github.io/programming/states.html
-// Or https://github.com/bevyengine/bevy/blob/main/examples/ecs/state.rs
-#[derive(Clone, Eq, PartialEq, Debug, Hash)]
-enum GameState {
-    // During the loading State the LoadingPlugin will load our assets
-    Loading,
-    // During this State the actual game logic is executed
-    Playing,
-    // Here the menu is drawn and waiting for player interaction
-    Menu,
-}
 
 pub struct MouseTrapPlugin;
 
 impl Plugin for MouseTrapPlugin {
     fn build(&self, app: &mut AppBuilder) {
-        app.add_state(GameState::Loading)
-            .add_plugin(LoadingPlugin)
+        app.add_state(game_state::GameState::Loading)
+            .add_plugin(assets_plugin::AssetsPlugin)
             .add_plugin(MenuPlugin)
             .add_plugin(ActionsPlugin)
             .add_plugin(InternalAudioPlugin)
-            .add_plugin(PlayerPlugin)
+            .add_plugin(player_plugin::PlayerPlugin)
             .add_plugin(bevy_devtools::DevToolsPlugin);
     }
 }

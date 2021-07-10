@@ -1,0 +1,8 @@
+[package]
+name = "actions_plugin"
+version = "0.1.0"
+edition = "2018"
+
+[dependencies]
+game_state = { path = "../../crates/game_state" }
+bevy = { version = "0.5.0", default-features = false }

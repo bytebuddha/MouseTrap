@@ -25,6 +25,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d9fe5e32de01730eb1f6b7f5b51c17e03e2325bf40a74f754f04f130043affff"
 
 [[package]]
+name = "actions_plugin"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "game_state",
+]
+
+[[package]]
 name = "adler32"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -152,6 +160,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c69a8137596e84c22d57f3da1b5de1d4230b1742a710091c85f4d7ce50f00f38"
 dependencies = [
  "libloading 0.6.7",
+]
+
+[[package]]
+name = "assets_plugin"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "bevy_asset_loader",
+ "bevy_kira_audio",
+ "game_state",
 ]
 
 [[package]]
@@ -1529,6 +1547,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "game_state"
+version = "0.1.0"
+
+[[package]]
 name = "getrandom"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2259,10 +2281,13 @@ dependencies = [
 name = "mousetrap_plugin"
 version = "0.1.0"
 dependencies = [
+ "actions_plugin",
+ "assets_plugin",
  "bevy",
- "bevy_asset_loader",
  "bevy_devtools",
  "bevy_kira_audio",
+ "game_state",
+ "player_plugin",
  "rand",
 ]
 
@@ -2710,6 +2735,16 @@ name = "pkg-config"
 version = "0.3.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3831453b3449ceb48b6d9c7ad7c96d5ea673e9b470a1dc578c2ce6521230884c"
+
+[[package]]
+name = "player_plugin"
+version = "0.1.0"
+dependencies = [
+ "actions_plugin",
+ "assets_plugin",
+ "bevy",
+ "game_state",
+]
 
 [[package]]
 name = "png"
